@@ -1,0 +1,305 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Patrick Hand', cursive;
+    background-color: #fff5f8;
+    color: #333;
+    cursor: none;
+    /* Hides the default cursor */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background changes */
+}
+
+/* Top Bar */
+header {
+    background-color: #ffccd5;
+    padding: 10px 20px;
+    text-align: center;
+    border-bottom: 3px solid #ffb3c1;
+    animation: slideDown 1s ease-in-out;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ff4d6d;
+    transition: transform 0.3s ease;
+}
+
+header p {
+    font-size: 1rem;
+    color: #ff6b81;
+}
+
+/* Messaging Section */
+.messages {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    padding: 10px;
+    background-color: #ffe2e9;
+    border: 3px solid #ffb3c1;
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    background-color: #ffdce1;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    color: #333;
+    opacity: 0;
+    animation: fadeInMessage 1s forwards;
+    -duration: 2s;
+}
+
+.message:nth-child(1) {
+    animation-delay: 2s;
+}
+
+.message:nth-child(2) {
+    animation-delay: 4s;
+}
+
+.message:nth-child(3) {
+    animation-delay: 6s;
+}
+
+.message:nth-child(4) {
+    animation-delay: 12s;
+}
+
+.message:nth-child(5) {
+    animation-delay: 16s;
+}
+
+.message:nth-child(6) {
+    animation-delay: 19s;
+}
+
+.message:nth-child(7) {
+    animation-delay: 23s;
+}
+
+.message:nth-child(8) {
+    animation-delay: 28s;
+}
+.message:nth-child(9) {
+    animation-delay: 30s;
+}
+
+
+.message span {
+    font-weight: bold;
+    /* Makes 'Quin:' bold */
+    color: #ff4d6d;
+    /* Optional: Keeps the color cute and consistent */
+}
+
+.message:hover {
+    color: pink;
+
+}
+/* Animations */
+@keyframes fadeInMessage {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Rat Images */
+/* Rat Images */
+.rat-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 images per row */
+    gap: 15px;
+    padding: 20px;
+    justify-items: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.rat-images .rat-image {
+    position: relative;
+    /* Makes it possible to position the tooltip relative to the image */
+    overflow: hidden;
+    width: 100%;
+    /* Ensures the container takes the full available width */
+    height: 250px;
+    /* Fixed height for all images */
+}
+
+.rat-images img {
+    width: 100%;
+    /* Ensures image covers full width of its container */
+    height: 100%;
+    /* Forces image to cover the full height of its container */
+    object-fit: cover;
+    /* Ensures the image is properly scaled and cropped */
+    border-radius: 15px;
+    border: 3px solid #ffb3c1;
+    box-shadow: 0 8px 20px rgba(173, 216, 230, 0.3), 0 6px 15px rgba(173, 216, 230, 0.5);
+    /* Light blue shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rat-images img:hover {
+    box-shadow: 0 8px 20px rgba(173, 216, 230, 0.5), 0 6px 15px rgba(173, 216, 230, 0.7);
+    /* Larger light blue shadow on hover */
+}
+
+/* Custom Tooltip */
+.rat-images .rat-image::after {
+    content: attr(data-tooltip);
+    /* Uses the data-tooltip attribute */
+    position: absolute;
+    bottom: -30px;
+    /* Position below the image */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff4d6d;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 1rem;
+    opacity: 0;
+    /* Start as hidden */
+    pointer-events: none;
+    /* Prevents it from interfering with interactions */
+    transition: opacity 0.3s ease, bottom 0.3s ease;
+    /* Smooth transition for appearing */
+    white-space: nowrap;
+    /* Prevents text from breaking */
+    z-index: 10;
+}
+
+.rat-images .rat-image:hover::after {
+    opacity: 1;
+    /* Make the tooltip visible when hovering */
+    bottom: 10px;
+    /* Moves it up slightly */
+}
+
+
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInMessage {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: absolute;
+    width: 40px;
+    /* Adjust image size as needed */
+    height: 40px;
+    pointer-events: none;
+    /* Ensures it doesn't interfere with clicks */
+    transform: translate(-50%, -50%);
+    /* Centers the image on the cursor */
+    z-index: 9999;
+    /* Ensures it's always on top */
+    transition: transform 0.1s ease;
+}
+
+/* Cursor Tilt Effect */
+body:hover .custom-cursor {
+    transform: translate(-50%, -50%) rotate(10deg);
+    /* Adds slight tilt when cursor moves */
+}
+
+/* Hover Effects */
+* {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover on elements */
+header:hover h1 {
+    transform: scale(1.1);
+    /* Slight scaling effect on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .messages {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .rat-images {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 images per row on smaller screens */
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .messages {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .rat-images {
+        grid-template-columns: 1fr;
+        /* 1 image per row on smallest screens */
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 0.8rem;
+    }
+}
